@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"5190090000025620205",
+		"product_id":"736430079244570763",
+		"client_id":"408533146540180480",
+		"client_secret":"BF8C972C2C6300A06BD55919F06501AFDD8ABF1ED98927352AD07B9D9EA5A3FA",
+		"app_id":"102579991",
+		"package_name":"com.engin.taplay",
+		"api_key":"CgB6e3x9flyoB4HJGBoFKNhWlXiDqSiSkseEeX+uR6JGG5ST8yG3Vp20G+kRz4GxVXkhx08WJFSLONIGnT8onibA"
+	},
+	"configuration_version":"1.0"
+}
