@@ -2,8 +2,16 @@ package com.engin.taplay;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import java.util.Random;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeActivity extends AppCompatActivity {
     private String playerID;
@@ -14,11 +22,21 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Intent intent = getIntent();
         playerID = intent.getStringExtra("playerID");
+        ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.gameBtn)
     public void openNewGame() {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("playerID", playerID);
         startActivity(intent);
     }
+
+    @OnClick(R.id.leaderboardBtn)
+    public void openLeadederboard() {
+        Intent intent = new Intent(this, LeaderboardActivity.class);
+        startActivity(intent);
+    }
+
+
 }

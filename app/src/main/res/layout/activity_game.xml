@@ -7,12 +7,12 @@
     tools:context=".HomeActivity">
 
     <TextView
-        android:gravity="center"
         android:id="@+id/numberTv"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
+        android:gravity="center"
         android:text="300"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,18 +26,18 @@
         android:gravity="center"
         android:text="300"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/numberTv9"
+        app:layout_constraintEnd_toStartOf="@+id/answer1"
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toEndOf="@+id/numberTv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:gravity="center"
         android:id="@+id/numberTv3"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
+        android:gravity="center"
         android:text="300"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:gravity="center"
         android:text="300"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/numberTv7"
+        app:layout_constraintEnd_toStartOf="@+id/answer2"
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toEndOf="@+id/numberTv3"
         app:layout_constraintTop_toBottomOf="@+id/numberTv2" />
@@ -64,7 +64,7 @@
         android:text="300"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numberTv8"
+        app:layout_constraintEnd_toStartOf="@+id/answer3"
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toEndOf="@+id/numberTv6"
         app:layout_constraintTop_toBottomOf="@+id/numberTv4"
@@ -74,7 +74,7 @@
         android:inputType="number"
         android:maxLines="1"
         android:maxLength="4"
-        android:id="@+id/numberTv7"
+        android:id="@+id/answer2"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -82,13 +82,13 @@
         android:gravity="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberTv9" />
+        app:layout_constraintTop_toBottomOf="@+id/answer1" />
 
     <EditText
         android:inputType="number"
         android:maxLines="1"
         android:maxLength="4"
-        android:id="@+id/numberTv9"
+        android:id="@+id/answer1"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
@@ -102,7 +102,7 @@
         android:inputType="number"
         android:maxLines="1"
         android:maxLength="4"
-        android:id="@+id/numberTv8"
+        android:id="@+id/answer3"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
@@ -110,15 +110,15 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberTv7"
+        app:layout_constraintTop_toBottomOf="@+id/answer2"
         app:layout_constraintVertical_bias="0.165" />
 
     <TextView
-        android:gravity="center"
         android:id="@+id/numberTv6"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:gravity="center"
         android:text="300"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +127,7 @@
         app:layout_constraintVertical_bias="0.19" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/checkBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
@@ -137,5 +137,39 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberTv5" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        app:layout_constraintEnd_toStartOf="@+id/numberTv2"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toEndOf="@+id/numberTv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/plus_sign" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/numberTv4"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/numberTv3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/plus_sign" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numberTv5"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toEndOf="@+id/numberTv6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.227"
+        app:srcCompat="@drawable/plus_sign" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

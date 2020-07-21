@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity  {
-    private final String TAG = "GameApplication";
+    private final String TAG = "SignInActivity";
     private PlayersClient playersClient;
     private String playerID;
 
