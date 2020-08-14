@@ -38,11 +38,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.archiveBtn)
-    public  void openArchive() {
-        Intent intent = new Intent(this, ArchiveActivity.class);
-        startActivity(intent);
-    }
+//    @OnClick(R.id.archiveBtn)
+//    public  void openArchive() {
+//        Intent intent = new Intent(this, ArchiveActivity.class);
+//        startActivity(intent);
+//    }
 
 
 }
