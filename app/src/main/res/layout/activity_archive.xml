@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ArchiveActivity">
 
     <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="150dp"
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="249dp"
-        android:text="@string/hwid_huawei_login_button_text"
-        android:background="@drawable/btn_rounded_colored"
+        android:layout_marginTop="138dp"
+        android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -128,10 +128,11 @@
 
     <Button
         android:id="@+id/checkBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
         android:text="Check Answers"
+        android:background="@drawable/btn_rounded_colored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

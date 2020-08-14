@@ -33,8 +33,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.leaderboardBtn)
-    public void openLeadederboard() {
+    public void openLeaderboard() {
         Intent intent = new Intent(this, LeaderboardActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.archiveBtn)
+    public  void openArchive() {
+        Intent intent = new Intent(this, ArchiveActivity.class);
         startActivity(intent);
     }
 

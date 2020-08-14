@@ -3,7 +3,9 @@ package com.engin.taplay;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,9 +16,11 @@ import com.huawei.hmf.tasks.Task;
 import com.huawei.hms.common.ApiException;
 import com.huawei.hms.jos.JosApps;
 import com.huawei.hms.jos.JosAppsClient;
+import com.huawei.hms.jos.games.GameScopes;
 import com.huawei.hms.jos.games.Games;
 import com.huawei.hms.jos.games.PlayersClient;
 import com.huawei.hms.jos.games.player.Player;
+import com.huawei.hms.support.api.entity.auth.Scope;
 import com.huawei.hms.support.hwid.HuaweiIdAuthManager;
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams;
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper;
@@ -27,22 +31,30 @@ import com.huawei.hms.support.hwid.service.HuaweiIdAuthService;
 import org.json.JSONException;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     private final String TAG = "SignInActivity";
     private PlayersClient playersClient;
     private String playerID;
+    SharedPreferences sharedPreferences;
+    final LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        sharedPreferences = getSharedPreferences("com.engin.taplay", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("currentID", null) != null) {
+            signIn();
+        }
     }
 
     private void init(AuthHuaweiId authHuaweiId) {
@@ -62,12 +74,18 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public HuaweiIdAuthParams getHuaweiIdParams() {
+        List<Scope> scopes = new ArrayList<>();
+        scopes.add(GameScopes.DRIVE_APP_DATA);
         return new HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM_GAME)
-                .setIdToken().createParams();
+                .setScopeList(scopes).createParams();
+//        return huaweiIdAuthParams;
+//        return new HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM_GAME)
+//                .setIdToken().createParams();
     }
 
     @OnClick(R.id.loginBtn)
     public void signIn() {
+        loadingDialog.startLoadingDialog();
         Task<AuthHuaweiId> authHuaweiIdTask = HuaweiIdAuthManager.getService(this, getHuaweiIdParams())
                 .silentSignIn();
         authHuaweiIdTask.addOnSuccessListener(new OnSuccessListener<AuthHuaweiId>() {
@@ -75,8 +93,10 @@ public class MainActivity extends AppCompatActivity  {
             public void onSuccess(AuthHuaweiId authHuaweiId) {
                 Log.i(TAG, "silent signIn success");
                 Log.i(TAG, "display:" + authHuaweiId.getDisplayName());
+                sharedPreferences = getSharedPreferences("com.engin.taplay", Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString("currentID", authHuaweiId.toString()).apply();
                 init(authHuaweiId);
-                login(authHuaweiId);
+                login();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -123,8 +143,9 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
-    public void login(AuthHuaweiId authHuaweiId) {
-        playersClient = Games.getPlayersClient(this, authHuaweiId);
+    public void login() {
+//        playersClient = Games.getPlayersClient(this, authHuaweiId);
+        playersClient = Games.getPlayersClient(this);
         Task<Player> playerTask = playersClient.getCurrentPlayer();
         playerTask.addOnSuccessListener(new OnSuccessListener<Player>() {
             @Override
@@ -134,6 +155,7 @@ public class MainActivity extends AppCompatActivity  {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 intent.putExtra("playerID", playerID);
                 startActivity(intent);
+                finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
